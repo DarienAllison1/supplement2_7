@@ -6,6 +6,12 @@ import java.util.Scanner;
  */
 public class FileOperations {
 
+    /**
+     * Entry point for the File Operations program.
+     * Provides a menu for users to interact with file operations.
+     *
+     * @param args command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -61,12 +67,26 @@ public class FileOperations {
         }
     }
 
+    /**
+     * Writes content to a specified file. Overwrites the file if it already exists.
+     *
+     * @param filename the name of the file to write to.
+     * @param content the content to write to the file.
+     * @throws IOException if an I/O error occurs during the operation.
+     */
     public static void writeFile(String filename, String content) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             writer.write(content);
         }
     }
 
+    /**
+     * Reads the content of a specified file.
+     *
+     * @param filename the name of the file to read from.
+     * @return the content of the file as a string.
+     * @throws IOException if an I/O error occurs during the operation.
+     */
     public static String readFile(String filename) throws IOException {
         StringBuilder content = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -78,6 +98,13 @@ public class FileOperations {
         return content.toString().trim();
     }
 
+    /**
+     * Appends content to a specified file. Creates the file if it does not exist.
+     *
+     * @param filename the name of the file to append to.
+     * @param content the content to append to the file.
+     * @throws IOException if an I/O error occurs during the operation.
+     */
     public static void appendToFile(String filename, String content) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
             writer.write(content);
@@ -85,3 +112,4 @@ public class FileOperations {
         }
     }
 }
+
